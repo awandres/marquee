@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Bob",
+    "concert": "Fun with modules, controllers, services, directives... woohoo"
+  },
+  {
+    "name": "Jack",
+    "concert": "JavaScript everywhere? Hooray!"
+  },
+  {
+    "name": "Jill",
+    "concert": "YAYAYAYAYAYAY"
+  }
+]
