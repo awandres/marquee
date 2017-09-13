@@ -1,15 +1,14 @@
 <h3>Search Page</h3>
 
-<h3>This Response {{vm.results}}</h3>
+<h3>This Response</h3>
 
 
-  <div style='height:20px; width:20px' ng-repeat="search in vm.searches track by $index">
-      <p>{{search._embedded.events.name}}</p>
-  </div>
+<input type="text" ng-model="keyword" placeholder="Search for artist" />
+<input type="submit" ng-click="vm.searchArtist(keyword)" Value="Search" />
 
 
 <div>
-  <div data-ng-repeat="result in vm.results track by $index">
+  <div data-ng-repeat="result in vm.results">
       <p>{{result.name}}</p>
   </div>
 </div>
