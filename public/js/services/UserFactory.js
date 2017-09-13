@@ -3,10 +3,10 @@ angular.module('marquee')
   '$resource',
   UserFactory
 ])
-.factory('SearchFactory', [
-  '$resource',
-  SearchFactory
-])
+// .factory('SearchFactory', [
+//   '$resource',
+//   SearchFactory
+// ])
 
 function UserFactory($resource) {
   return $resource('/api/users/:id', null, {
