@@ -2,7 +2,8 @@ console.log('linked')
 /* global angular */
 angular.module('marquee', [
   'ui.router',
-  'ngResource'
+  'ngResource',
+  'ngMaterial'
 ])
 .config([
   '$stateProvider',

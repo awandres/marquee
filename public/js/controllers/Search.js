@@ -17,7 +17,7 @@ function SearchFunction(SearchFactory, logic, $http) {
 
     // this.results = SearchFactory.then((response) => {return response})
     // console.log(this.results)
-
+    this.clickFn = function(name) {console.log(name)}
 
     this.results = []
     this.searchArtist = function(keyword) {
@@ -26,9 +26,10 @@ function SearchFunction(SearchFactory, logic, $http) {
         method: 'GET',
         url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=` + keyword + `&apikey=VVBGfqBjSA4GcA9GCIhVCDxyYkJtCeA7`
         }).then((response) => {
+          console.log(response.data)
+          console.log(response.data._embedded.events[0]._embedded.venues[0].name)
           console.log(response.data._embedded.events)
           this.results = response.data._embedded.events
-          console.log(this.results)
 
       })
       // return this.results
