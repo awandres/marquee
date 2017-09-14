@@ -5,13 +5,34 @@ const express        = require('express');
 const app            = express();
 const bodyParser     = require('body-parser');
 const methodOverride = require('method-override');
-
+const path = require('path')
+const favicon = require('serve-favicon')
+const logger = require('morgan')
+const cookieParser = require('cookie-parser')
+const passport = require('passport')
 const User = require('./db/schema.js')
+const jwt = require('express-jwt')
+const auth = jwt({
+  secret: 'MY_SECRET',
+  userProperty: 'payload'
+})
+const ctrlProfile = require('./apiControllers/profile');
+const ctrlAuth = require('./apiControllers/authentication');
+const config = ('./config/passport')
+
 
 app.set('port', process.env.PORT || 8080)
 app.use('/assets', express.static('public'))
 app.use('/node_modules', express.static('node_modules'))
 app.use(bodyParser.json({extended:true}))
+app.use(passport.initialize())
+
+
+app.get('/profile', auth, ctrlProfile.profileRead);
+
+app.post('/register', ctrlAuth.register);
+app.post('/login', ctrlAuth.login);
+
 
 app.get('/api/users', (req, res) => {
   User.find({}, null).then((users) => {

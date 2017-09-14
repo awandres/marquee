@@ -10,6 +10,12 @@ angular.module('marquee', [
   '$urlRouterProvider',
   Router
 ])
+.run([
+  '$rootScope',
+  '$location',
+  'authentication',
+  run
+])
 
 function Router($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -25,6 +31,29 @@ function Router($stateProvider, $urlRouterProvider) {
       controllerAs: 'vm',
       templateUrl: 'assets/js/views/Search.html'
     })
-
+    .state('login', {
+      url: '/login',
+      controller: 'loginCtrl',
+      controllerAs: 'vm',
+      templateUrl: 'assets/js/views/login.html'
+    })
+    .state('register', {
+      url: '/register',
+      controller: 'registerCtrl',
+      controllerAs: 'vm',
+      templateUrl: 'assets/js/views/Register.html'
+    })
+    .state('profile', {
+      url: '/profile',
+      controller: 'profileCtrl',
+      controllerAs: 'vm',
+      templateUrl: 'assets/js/views/profile.html'
+    })
   $urlRouterProvider.otherwise('/')
+}
+
+function run($rootScope, $location, authentication) {
+  $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
+    if($location.path() === '/profile' && !authentication.isLoggedIn()) {$location.path('/')}
+  })
 }

@@ -1,29 +1,35 @@
 [
   {
-    "name": "Bob",
+    "username": "Bob",
     "concerts": [
       {
         "name": "Artist1",
         "venue": "Venue1"
       }
-      ]
+    ],
+      "hash" : "none",
+      "salt" : "none"
   },
   {
-    "name": "Jack",
+    "username": "Jack",
     "concerts": [
       {
         "name": "Artist2",
         "venue": "Venue2"
       }
-      ]
+    ],
+    "hash" : "none",
+    "salt" : "none"
   },
   {
-    "name": "Jill",
+    "username": "Jill",
     "concerts": [
       {
         "name": "Artist3",
         "venue": "Venue3"
       }
-      ]
+    ],
+      "hash" : "none",
+      "salt" : "none"
   }
 ]

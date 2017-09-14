@@ -4,8 +4,10 @@ const User = require('./schema.js')
 User.remove({}).then(function(){
   userData.forEach(function(user) {
     User.create({
-      name: user.name,
-      concerts: user.concerts
+      username: user.username,
+      concerts: user.concerts,
+      hash: user.hash,
+      salt: user.salt
     })
       .then((newUser) => {
         console.log(newUser)
@@ -13,6 +15,7 @@ User.remove({}).then(function(){
       .catch((err) => {
         console.log(err)
       })
+
   })
   .then(() => {
     process.exit()

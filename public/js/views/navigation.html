@@ -1,0 +1,4 @@
+<ul class  ="nav navbar-nav navbar-right">
+  <li ng-hide="navvm.isLoggedIn"><a sref="login">Sign in</a></li>
+  <li ng-show="navvm.isLoggedIn"><a sref="profile"> {{vm.currentUser.username}}</a></li>
+</ul>
