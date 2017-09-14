@@ -19,6 +19,14 @@ app.get('/api/users', (req, res) => {
   })
 })
 
+app.put('/api/users', (req, res) => {
+  console.log(req.body)
+  User.findOneAndUpdate({ _id: '59bacf1f56b3243aca9e846c' }, {"$push" : {"concerts": req.body}}, {new: true}).then((user) => {
+    console.log(user)
+    res.status(200).json(user)
+  })
+})
+
 app.get('/*', (req, res) => {
   res.sendFile(__dirname + '/public/index.html')
 })

@@ -5,7 +5,7 @@ User.remove({}).then(function(){
   userData.forEach(function(user) {
     User.create({
       name: user.name,
-      concert: user.concert
+      concerts: user.concerts
     })
       .then((newUser) => {
         console.log(newUser)

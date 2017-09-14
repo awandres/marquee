@@ -32,7 +32,17 @@ function SearchFunction(SearchFactory, logic, $http) {
           this.results = response.data._embedded.events
 
       })
-      // return this.results
+    }
+
+    this.saveEvent = function(name, venue) {
+      return(
+        $http({
+          method: 'PUT',
+          url: '/api/users',
+          data: {concerts: {name: name , concerts: venue}}
+
+        }).then((response) => {console.log(response)})
+      )
     }
 
   //   this.keyword = 'Dan'

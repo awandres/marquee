@@ -1,14 +1,29 @@
 [
   {
     "name": "Bob",
-    "concert": "Fun with modules, controllers, services, directives... woohoo"
+    "concerts": [
+      {
+        "name": "Artist1",
+        "venue": "Venue1"
+      }
+      ]
   },
   {
     "name": "Jack",
-    "concert": "JavaScript everywhere? Hooray!"
+    "concerts": [
+      {
+        "name": "Artist2",
+        "venue": "Venue2"
+      }
+      ]
   },
   {
     "name": "Jill",
-    "concert": "YAYAYAYAYAYAY"
+    "concerts": [
+      {
+        "name": "Artist3",
+        "venue": "Venue3"
+      }
+      ]
   }
 ]

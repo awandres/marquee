@@ -11,7 +11,7 @@
   <md-content layout-padding>
   <div style='border: 2px solid black; background-color:#89CFF0;'data-ng-repeat="result in vm.results">
       <h3>{{result.name}}</h3> <p>at the {{result._embedded.venues[0].name}}</p>
-      <button ng-click="vm.clickFn(result.name)"> A Button </button>
+      <button ng-click="vm.saveEvent(result.name, result._embedded.venues[0].name)"> A Button </button>
   </div>
   </md-content>
 </div>
