@@ -66,6 +66,15 @@ app.put('/api/users/:username', (req, res) => {
   })
 })
 
+app.put('/api/users/:username/groups', (req, res) => {
+  // console.log(req.body)
+
+  User.findOneAndUpdate({username: req.params.username}, {"$push" :  req.body}, {new: true}).then((user) => {
+    console.log(user.groups)
+    res.status(200).json(user)
+  })
+})
+
 app.put('/api/groups/:groupname', (req, res) => {
   console.log(req.body)
 

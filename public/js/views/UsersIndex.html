@@ -1,15 +1,18 @@
 <navigation></navigation>
 
+<h3>Set Current User</h3>
+<div ng-repeat="user in vm.users">
+  <input type="submit" ng-click="vm.setUser(user.username)" Value="{{user.username}}" />
+</div>
 
-
-<div style="display:flex;" class="users-gallery">
+<div style="display:flex; justify-content:space-between;" class="users-gallery">
   <div>
     <div ng-repeat="user in vm.users">
-      <h3>{{user.username}}</h3>
-        <div ng-repeat="concert in user.concerts">
-        <p>{{concert.name}} at the {{concert.venue}}</p>
-        <p><a href="{{concert.url}}">Buy Tickets Here</a></p>
+      <h3>{{user.username}}'s Concert List</h3>
 
+        <div style="border:2px solid blue;" ng-repeat="concert in user.concerts">
+        <h3>{{concert.name}} at the {{concert.venue}}</h3>
+        <p><a href="{{concert.url}}">Buy Tickets Here</a></p>
         <form name="groupSelect" ng-submit="vm.addToGroup(concert.name, concert.venue, vm.groupTo)">
           <label for="groupSelect"> Add to Group </label>
           <select name="groupSelect" ng-model="vm.groupTo">
@@ -19,7 +22,11 @@
 
         </form>
         </div>
+        <h5>Group List</h5>
+        <div ng-repeat="group in user.groups">
+        <p> {{group.groupname}} </p>
       </div>
+    </div>
     </div>
 
     <div>
@@ -29,6 +36,7 @@
           <div ng-repeat="concert in group.concerts">
             <p>{{concert.name}} at {{concert.venue}}</p>
           </div>
+          <input type="submit"  value="Join Group" ng-click="vm.joinGroup(group)" />
       </div>
     </div>
 </div>

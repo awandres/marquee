@@ -40,6 +40,18 @@ this.searchEvents = function(keyword) {
  })
  )
 }
+this.currentUserName = ''
 
-return this.searchEvents
+this.setUser = function(name) {
+  this.currentUserName = name
+  console.log(this.currentUserName)
+  return this.currentUserName
+}
+
+return {
+  searchEvents: this.searchEvents,
+  setUser: this.setUser,
+  currentUserName: this.currentUserName
+}
+
 }

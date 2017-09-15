@@ -17,13 +17,15 @@ function SearchFunction(SearchFactory, logic, $http, UserFactory) {
     //
 
     // this.results = SearchFactory.then((response) => {return response})
-    // console.log(this.results)
+    console.log(this.results)
     this.currentUserName = ''
     this.users = UserFactory.query()
-    this.setUser = function(name) {
-      this.currentUserName = name
-      console.log(this.currentUserName)
-    }
+    // this.setUser = function(name) {
+    //   this.currentUserName = name
+    //   console.log(this.currentUserName)
+    // }
+
+    this.setUser = SearchFactory.setUser
 
     this.results = []
     this.searchArtist = function(keyword) {
