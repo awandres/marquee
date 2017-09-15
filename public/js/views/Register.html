@@ -1,0 +1,17 @@
+<!-- <navigation></navigation> -->
+
+
+<h3>Register Form</h3>
+
+<form ng-submit="vm.onSubmit()">
+  <div class="form-group">
+    <label for="usernamename">Username</label>
+    <input type="text" class="form-control" id="username" placeholder="Enter your username" ng-model="vm.credentials.username">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Enter password" ng-model="vm.credentials.password">
+  </div>
+  <button type="submit" class="btn btn-default">Register</button>
+</form>

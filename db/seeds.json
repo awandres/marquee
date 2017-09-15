@@ -1,29 +1,38 @@
 [
   {
-    "name": "Bob",
+    "username": "Bob",
     "concerts": [
       {
         "name": "Artist1",
-        "venue": "Venue1"
+        "venue": "Venue1",
+        "url": ""
       }
-      ]
+    ],
+      "hash" : "none",
+      "salt" : "none"
   },
   {
-    "name": "Jack",
+    "username": "Jack",
     "concerts": [
       {
         "name": "Artist2",
-        "venue": "Venue2"
+        "venue": "Venue2",
+        "url": ""
       }
-      ]
+    ],
+    "hash" : "none",
+    "salt" : "none"
   },
   {
-    "name": "Jill",
+    "username": "Jill",
     "concerts": [
       {
         "name": "Artist3",
-        "venue": "Venue3"
+        "venue": "Venue3",
+        "url": ""
       }
-      ]
+    ],
+      "hash" : "none",
+      "salt" : "none"
   }
 ]

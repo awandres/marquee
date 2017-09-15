@@ -1,7 +1,14 @@
+<navigation></navigation>
+
+
 <h3>Search Page</h3>
 
-<h3>This Response</h3>
+<h3>Set Current User</h3>
+<div ng-repeat="user in vm.users">
+  <input type="submit" ng-click="vm.setUser(user.username)" Value="{{user.username}}" />
+</div>
 
+<a ui-sref="UsersIndex">Back to Index</a>
 
 <input type="text" ng-model="keyword" placeholder="Search for artist" />
 <input type="submit" ng-click="vm.searchArtist(keyword)" Value="Search" />
@@ -11,7 +18,7 @@
   <md-content layout-padding>
   <div style='border: 2px solid black; background-color:#89CFF0;'data-ng-repeat="result in vm.results">
       <h3>{{result.name}}</h3> <p>at the {{result._embedded.venues[0].name}}</p>
-      <button ng-click="vm.saveEvent(result.name, result._embedded.venues[0].name)"> A Button </button>
+      <button ng-click="vm.saveEvent(result.name, result._embedded.venues[0].name, result.url, vm.currentUserName)"> A Button </button>
   </div>
   </md-content>
 </div>

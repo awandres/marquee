@@ -1,8 +1,34 @@
-<h1>Hello from View</h1>
+<navigation></navigation>
 
-<div class="users-gallery">
+
+
+<div style="display:flex;" class="users-gallery">
+  <div>
     <div ng-repeat="user in vm.users">
-      <p>{{user.name}}</p>
-      <p>{{user.concert}}</p>
+      <h3>{{user.username}}</h3>
+        <div ng-repeat="concert in user.concerts">
+        <p>{{concert.name}} at the {{concert.venue}}</p>
+        <p><a href="{{concert.url}}">Buy Tickets Here</a></p>
+
+        <form name="groupSelect" ng-submit="vm.addToGroup(concert.name, concert.venue, vm.groupTo)">
+          <label for="groupSelect"> Add to Group </label>
+          <select name="groupSelect" id="groupSelect" ng-model="vm.groupTo">
+            <option ng-repeat="group in vm.groups" value="{{group.groupname}}">{{group.groupname}}</option>
+          </select>
+          <input type="submit" id="submit" value="Submit" ng-submit="vm.addToGroup(concert.name, concert.venue, vm.groupTo)" />
+
+        </form>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Group List</h3>
+      <div ng-repeat="group in vm.groups">
+        <h4>{{group.groupname}} //</h4>
+          <div ng-repeat="concert in group.concerts">
+            <p>{{concert.name}} at {{concert.venue}}</p>
+          </div>
+      </div>
     </div>
 </div>

@@ -4,10 +4,11 @@ angular
   'SearchFactory',
   'logic',
   '$http',
+  'UserFactory',
   SearchFunction
 ])
 
-function SearchFunction(SearchFactory, logic, $http) {
+function SearchFunction(SearchFactory, logic, $http, UserFactory) {
   const $ = angular.element
 
     // this.results = logic.search()
@@ -17,7 +18,12 @@ function SearchFunction(SearchFactory, logic, $http) {
 
     // this.results = SearchFactory.then((response) => {return response})
     // console.log(this.results)
-    this.clickFn = function(name) {console.log(name)}
+    this.currentUserName = ''
+    this.users = UserFactory.query()
+    this.setUser = function(name) {
+      this.currentUserName = name
+      console.log(this.currentUserName)
+    }
 
     this.results = []
     this.searchArtist = function(keyword) {
@@ -34,12 +40,12 @@ function SearchFunction(SearchFactory, logic, $http) {
       })
     }
 
-    this.saveEvent = function(name, venue) {
+    this.saveEvent = function(name, venue, url, currentUserName) {
       return(
         $http({
           method: 'PUT',
-          url: '/api/users',
-          data: {concerts: {name: name , concerts: venue}}
+          url: '/api/users/'+ currentUserName,
+          data: {name: name, venue: venue, url:url}
 
         }).then((response) => {console.log(response)})
       )
