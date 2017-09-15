@@ -39,7 +39,7 @@ function SearchFunction(SearchFactory, logic, $http) {
         $http({
           method: 'PUT',
           url: '/api/users',
-          data: {concerts: {name: name , concerts: venue}}
+          data: {concerts: {name: name, concerts: venue}}
 
         }).then((response) => {console.log(response)})
       )

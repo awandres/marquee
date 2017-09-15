@@ -1,18 +1,19 @@
 angular
 .module('marquee')
 .controller('profileCtrl', [
-  '$location',
+  '$state',
   'userData',
   profile
 ])
 
-function profile($location, userData) {
+function profile($state, userData) {
   this.user = {}
 
-  userData.getProfile().success(function(data) {
+  userData.getProfile().then(function(data) {
+    console.log(data)
     this.user = data
   })
-  .error(function(err) {
+  .catch(function(err) {
     console.log(err)
   })
 }

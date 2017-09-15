@@ -1,12 +1,12 @@
 angular
 .module('marquee')
 .controller('loginCtrl', [
-  '$location',
+  '$state',
   'authentication',
   login
 ])
 
-function login($location, authentication) {
+function login($state, authentication) {
   this.credentials = {
     username: '',
     password: ''
@@ -15,10 +15,8 @@ function login($location, authentication) {
   this.onSubmit = function() {
     authentication
     .login(this.credentials)
-    .error(function(err) {
-      alert(err)
-    }).then(function() {
-      $location.path('profile')
+    .then(function() {
+      $state.go('profile')
     })
   }
 }

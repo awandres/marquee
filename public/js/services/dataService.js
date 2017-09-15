@@ -1,6 +1,6 @@
 angular
 .module('marquee')
-.service('userData', [
+.factory('userData', [
   '$http',
   'authentication',
   userData
@@ -16,7 +16,7 @@ function userData($http, authentication) {
     })
   }
 
-  return (
+  return {
     getProfile: getProfile
-  )
+  }
 }

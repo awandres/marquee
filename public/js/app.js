@@ -1,4 +1,5 @@
 console.log('linked')
+
 /* global angular */
 angular.module('marquee', [
   'ui.router',
@@ -8,16 +9,19 @@ angular.module('marquee', [
 .config([
   '$stateProvider',
   '$urlRouterProvider',
+  '$locationProvider',
   Router
 ])
-.run([
-  '$rootScope',
-  '$location',
-  'authentication',
-  run
-])
+// .run([
+//   '$rootScope',
+//   '$location',
+//   'authentication',
+//   run
+// ])
 
-function Router($stateProvider, $urlRouterProvider) {
+
+
+function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
     .state('usersIndex', {
       url: '/',
@@ -50,10 +54,6 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: 'assets/js/views/profile.html'
     })
   $urlRouterProvider.otherwise('/')
-}
+  $locationProvider.html5Mode(true)
 
-function run($rootScope, $location, authentication) {
-  $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
-    if($location.path() === '/profile' && !authentication.isLoggedIn()) {$location.path('/')}
-  })
 }

@@ -1,5 +1,5 @@
 const passport = require('passport')
-const User = require('./schema.js')
+const User = require('../db/schema.js')
 
 module.exports.register = function(req, res) {
   var user = new User()
@@ -10,7 +10,9 @@ module.exports.register = function(req, res) {
 
   user.save(function(err) {
     var token
+    console.log(err)
     token = user.generateJwt()
+    console.log(token)
     res.status(200)
     res.json({
       "token": token
@@ -21,13 +23,14 @@ module.exports.register = function(req, res) {
 module.exports.login = function(req, res) {
   passport.authenticate('local', function(err, user, info) {
     var token
-
     if(err) {
       res.status(404).json(err)
+      console.log(err)
     }
 
     if(user) {
       token = user.generateJwt()
+
       res.status(200)
       res.json({
         "token" : token

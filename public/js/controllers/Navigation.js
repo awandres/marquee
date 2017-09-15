@@ -1,8 +1,11 @@
 angular
-    .module('arquee')
-    .controller('navigationCtrl', navigationCtrl);
+    .module('marquee')
+    .controller('navigationCtrl', [
+      '$location',
+      'authentication',
+      navigationCtrl
+    ])
 
-  navigationCtrl.$inject = ['$location','authentication'];
   function navigationCtrl($location, authentication) {
 
     this.isLoggedIn = authentication.isLoggedIn();

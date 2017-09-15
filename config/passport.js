@@ -1,6 +1,6 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-const User = require('./schema.js')
+const User = require('../db/schema.js')
 
 
 passport.use(new LocalStrategy({
