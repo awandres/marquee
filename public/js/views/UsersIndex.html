@@ -12,10 +12,10 @@
 
         <form name="groupSelect" ng-submit="vm.addToGroup(concert.name, concert.venue, vm.groupTo)">
           <label for="groupSelect"> Add to Group </label>
-          <select name="groupSelect" id="groupSelect" ng-model="vm.groupTo">
+          <select name="groupSelect" ng-model="vm.groupTo">
             <option ng-repeat="group in vm.groups" value="{{group.groupname}}">{{group.groupname}}</option>
           </select>
-          <input type="submit" id="submit" value="Submit" ng-submit="vm.addToGroup(concert.name, concert.venue, vm.groupTo)" />
+          <input type="submit"  value="Submit" ng-submit="vm.addToGroup(concert.name, concert.venue, vm.groupTo)" />
 
         </form>
         </div>
