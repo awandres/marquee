@@ -13,7 +13,8 @@ const path = require('path')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const passport = require('passport')
-const User = require('./db/schema.js')
+const User = require('./db/schema.js').User
+const Group = require('./db/schema.js').Group
 const jwt = require('express-jwt')
 const auth = jwt({
   secret: process.env.TOKEN,
@@ -50,9 +51,25 @@ app.get('/api/users', (req, res) => {
   })
 })
 
-app.put('/api/users', (req, res) => {
+app.get('/api/groups', (req, res) => {
+  Group.find({}, null).then((groups) => {
+    res.json(groups)
+  })
+})
+
+app.put('/api/users/:username', (req, res) => {
   console.log(req.body)
-  User.findOneAndUpdate({ _id: '59bacf1f56b3243aca9e846c' }, {"$push" : {"concerts": req.body}}, {new: true}).then((user) => {
+
+  User.findOneAndUpdate({ username: req.params.username }, {"$push" : {"concerts": req.body}}, {new: true}).then((user) => {
+    console.log(user)
+    res.status(200).json(user)
+  })
+})
+
+app.put('/api/groups/:groupname', (req, res) => {
+  console.log(req.body)
+
+  Group.findOneAndUpdate({ groupname: req.params.groupname }, {"$push" : {"concerts": req.body}}, {new: true}).then((user) => {
     console.log(user)
     res.status(200).json(user)
   })

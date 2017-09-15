@@ -1,4 +1,4 @@
-const User = require('../db/schema.js')
+const User = require('../db/schema.js').User
 
 module.exports.profileRead = function(req, res) {
   if (!req.payload._id) {

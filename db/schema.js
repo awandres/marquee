@@ -2,12 +2,23 @@ const mongoose = require('./connection.js')
 const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
 
+const GroupSchema = new mongoose.Schema({
+  groupname: String,
+  concerts: [{
+    name: String,
+    venue: String,
+    url: String
+  }]
+})
+
 const UserSchema = new mongoose.Schema({
   username: String,
   concerts: [{
     name: String,
-    venue: String
+    venue: String,
+    url: String
   }],
+  groups: [GroupSchema],
   hash: String,
   salt: String
 })
@@ -35,4 +46,8 @@ UserSchema.methods.generateJwt = function() {
 }
 
 const User = mongoose.model('User', UserSchema)
-module.exports = User
+const Group = mongoose.model('Group', GroupSchema)
+module.exports = {
+  User: User,
+  Group: Group
+}

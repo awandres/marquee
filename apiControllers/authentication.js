@@ -1,5 +1,5 @@
 const passport = require('passport')
-const User = require('../db/schema.js')
+const User = require('../db/schema.js').User
 
 module.exports.register = function(req, res) {
   var user = new User()
