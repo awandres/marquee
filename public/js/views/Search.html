@@ -1,21 +1,24 @@
-
-<h3>Search Page</h3>
-
-<h3>Set Current User</h3>
-<div ng-repeat="user in vm.users">
-  <input type="submit" ng-click="vm.setUser(user.username)" Value="{{user.username}}" />
+<h3 style="text-align:center; text-indent:-30px;">Set Current User</h3>
+<div style="display:flex; justify-content:center; margin-bottom:30px;">
+  <div style="display:flex;">
+    <div style = "margin-right:20px;"ng-repeat="user in vm.users">
+      <button ng-click="vm.setUser(user.username)" Value="{{user.username}}">{{user.username}}</button>
+    </div>
+  </div>
 </div>
 
-<div style="width:100%; text-align:center;">
-<input id="search" type="text" ng-model="keyword" placeholder="Search for artist" />
-<input type="submit" ng-click="vm.searchArtist(keyword)" Value="Search" />
+<div style="width:100%; height:50px; display:flex; justify-content:center; margin-bottom:30px;">
+  <form ng-submit="vm.searchArtist(keyword)">
+<input id="search" ng-submit="vm.searchArtist(keyword)" type="text" ng-model="keyword" placeholder="Search for artist" />
+<!-- <input id="search-submit" type="submit" ng-click="vm.searchArtist(keyword)" Value="" /> -->
+</form>
 </div>
 
 <div style="display:flex; align-items:center; flex-direction:column; " ng-cloak>
 
   <div class="search-divs" data-ng-repeat="result in vm.results">
-      <h3 style="display:inline;">{{result.name}}</h3> <p>at the {{result._embedded.venues[0].name}} {{(result.priceRanges[0].min) ? '$' : ''}}{{result.priceRanges[0].min}}</p> <p>{{result.dates.start.localDate.slice(5)}}</p>
-      <button ng-click="vm.saveEvent(result.name, result._embedded.venues[0].name, result.url, vm.currentUserName)"> A Button </button>
+      <h3 style="display:inline;">{{result.name}}</h3> <p>at the {{result._embedded.venues[0].name}} ({{result._embedded.venues[0].city.name}}{{(result._embedded.venues[0].state.stateCode) ? ' ' : ''}}{{result._embedded.venues[0].state.stateCode}})</p> <p>{{result.dates.start.localDate.slice(5)}}</p> <p>{{(result.priceRanges[0].min) ? '$' : 'Prices Unavailable'}}{{result.priceRanges[0].min}}</p>
+      <button ng-click="vm.saveEvent(result.name, result._embedded.venues[0].name, result.url, vm.currentUserName)">Add To List</button>
   </div>
 
 </div>

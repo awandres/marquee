@@ -18,7 +18,7 @@ function SearchFunction(SearchFactory, logic, $http, UserFactory) {
 
     // this.results = SearchFactory.then((response) => {return response})
     console.log(this.results)
-    this.currentUserName = ''
+    // this.currentUserName = ''
     this.users = UserFactory.query()
     // this.setUser = function(name) {
     //   this.currentUserName = name

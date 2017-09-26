@@ -40,7 +40,7 @@ this.searchEvents = function(keyword) {
  })
  )
 }
-this.currentUserName = ''
+// this.currentUserName = ''
 
 this.setUser = function(name) {
   this.currentUserName = name
