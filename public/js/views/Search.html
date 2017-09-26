@@ -1,5 +1,3 @@
-<navigation></navigation>
-
 
 <h3>Search Page</h3>
 
@@ -8,16 +6,16 @@
   <input type="submit" ng-click="vm.setUser(user.username)" Value="{{user.username}}" />
 </div>
 
-
-<input type="text" ng-model="keyword" placeholder="Search for artist" />
+<div style="width:100%; text-align:center;">
+<input id="search" type="text" ng-model="keyword" placeholder="Search for artist" />
 <input type="submit" ng-click="vm.searchArtist(keyword)" Value="Search" />
+</div>
 
+<div style="display:flex; align-items:center; flex-direction:column; " ng-cloak>
 
-<div ng-cloak>
-  <md-content layout-padding>
-  <div style='border: 2px solid black; background-color:#89CFF0;'data-ng-repeat="result in vm.results">
-      <h3>{{result.name}}</h3> <p>at the {{result._embedded.venues[0].name}}</p>
+  <div class="search-divs" data-ng-repeat="result in vm.results">
+      <h3 style="display:inline;">{{result.name}}</h3> <p>at the {{result._embedded.venues[0].name}} {{(result.priceRanges[0].min) ? '$' : ''}}{{result.priceRanges[0].min}}</p> <p>{{result.dates.start.localDate.slice(5)}}</p>
       <button ng-click="vm.saveEvent(result.name, result._embedded.venues[0].name, result.url, vm.currentUserName)"> A Button </button>
   </div>
-  </md-content>
+
 </div>
