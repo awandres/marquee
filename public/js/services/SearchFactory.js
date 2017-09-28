@@ -5,7 +5,7 @@ angular.module('marquee')
   SearchFactory
 ])
 
-function SearchFactory($http) {
+function SearchFactory($http, $rootScope) {
 
 //   console.log(this.keyword)
 //   return $resource('https://app.ticketmaster.com/discovery/v2/events.json?keyword=:keyword&apikey=VVBGfqBjSA4GcA9GCIhVCDxyYkJtCeA7', {
@@ -43,15 +43,16 @@ this.searchEvents = function(keyword) {
 // this.currentUserName = ''
 
 this.setUser = function(name) {
-  this.currentUserName = name
-  console.log(this.currentUserName)
-  return this.currentUserName
+  // currentUserName = name
+  localStorage.setItem("currentUserName", name)
+  console.log(name)
+  return currentUserName
 }
 
 return {
   searchEvents: this.searchEvents,
   setUser: this.setUser,
-  currentUserName: this.currentUserName
+  currentUserName: currentUserName
 }
 
 }

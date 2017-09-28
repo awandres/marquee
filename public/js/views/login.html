@@ -1,5 +1,5 @@
 
-<form ng-submit="vm.onSubmit()">
+<!-- <form ng-submit="vm.onSubmit()">
   <div class="form-group">
     <label for="username">Username</label>
     <input type="username" class="form-control" id="username" placeholder="Enter username" ng-model="vm.credentials.username">
@@ -10,4 +10,13 @@
     <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
   </div>
   <button type="submit" class="btn btn-default">Sign In </button>
-</form>
+</form> -->
+
+<h3 style="text-align:center; text-indent:-30px;">Set Current User</h3>
+<div style="display:flex; justify-content:center; margin-bottom:30px;">
+  <div style="display:flex;">
+    <div style = "margin-right:20px;"ng-repeat="user in vm.users">
+      <button ng-click="vm.setUser(user.username)" Value="{{user.username}}">{{user.username}}</button>
+    </div>
+  </div>
+</div>

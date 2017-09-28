@@ -1,13 +1,15 @@
-<h3 style="text-align:center; text-indent:-30px;">Set Current User</h3>
+<!-- <h3 style="text-align:center; text-indent:-30px;">Set Current User</h3>
 <div style="display:flex; justify-content:center; margin-bottom:30px;">
   <div style="display:flex;">
     <div style = "margin-right:20px;"ng-repeat="user in vm.users">
       <button ng-click="vm.setUser(user.username)" Value="{{user.username}}">{{user.username}}</button>
     </div>
   </div>
-</div>
+</div> -->
 
-<div style="width:100%; height:50px; display:flex; justify-content:center; margin-bottom:30px;">
+<h1 style="text-align:center;">Marquee</h1>
+
+<div style="width:100%; height:50px; display:flex; justify-content:center; margin-bottom:30px; margin-top:130px;">
   <form ng-submit="vm.searchArtist(keyword)">
 <input id="search" ng-submit="vm.searchArtist(keyword)" type="text" ng-model="keyword" placeholder="Search for artist" />
 <!-- <input id="search-submit" type="submit" ng-click="vm.searchArtist(keyword)" Value="" /> -->

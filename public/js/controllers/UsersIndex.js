@@ -14,11 +14,19 @@ function IndexControllerFn(UserFactory, GroupFactory, $http, SearchFactory) {
   this.groups = GroupFactory.query()
   this.groupTo = ''
   console.log(this.users)
-  this.currentUserName = SearchFactory.currentUserName
+  this.currentUserName = localStorage.getItem('currentUserName')
   console.log( this.currentUserName)
   this.setUser = SearchFactory.setUser
+  console.log(currentUserName)
+  console.log(this.groups)
+  this.currentUserObject = $http({
+    method: 'GET',
+    url: '/api/users/' + this.currentUserName
+  }).then((response) => {this.currentUserObject = response; console.log(response)})
 
 
+
+  console.log(this.currentUserObject)
   this.addToGroup = function(name, venue, groupTo) {
     console.log(name)
     console.log(groupTo)
@@ -38,10 +46,13 @@ function IndexControllerFn(UserFactory, GroupFactory, $http, SearchFactory) {
     return(
       $http({
         method: 'PUT',
-        url: '/api/users/'+ this.currentUserName + '/groups',
+        url: '/api/users/'+ this.currentUserObject.data[0].username + '/groups',
         data: {groups: group}
 
       }).then((response) => {console.log(response)})
     )
   }
+
+
+
   }

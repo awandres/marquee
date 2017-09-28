@@ -126,6 +126,19 @@ h3  {
   opacity:1.0;
   font-size: 30px;
 }
+
+a {
+  color: #C0B283;
+}
+
+a:visited {
+  color: #C0B283;
+}
+
+h1 {
+  color: #C0B283;
+  font-size: 90px;
+}
 /*
 div {
   background-color: #FF6A56;

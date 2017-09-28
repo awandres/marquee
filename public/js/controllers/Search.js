@@ -1,3 +1,5 @@
+var currentUserName
+
 angular
 .module('marquee')
 .controller('Search', [
@@ -24,7 +26,8 @@ function SearchFunction(SearchFactory, logic, $http, UserFactory) {
     //   this.currentUserName = name
     //   console.log(this.currentUserName)
     // }
-
+    this.currentUserName = localStorage.getItem('currentUserName')
+    console.log(this.currentUserName)
     this.setUser = SearchFactory.setUser
 
     this.results = []

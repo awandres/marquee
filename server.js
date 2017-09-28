@@ -51,6 +51,12 @@ app.get('/api/users', (req, res) => {
   })
 })
 
+app.get('/api/users/:username', (req, res) => {
+  User.find({username: req.params.username}, null).then((users) => {
+    res.json(users)
+  })
+})
+
 app.get('/api/groups', (req, res) => {
   Group.find({}, null).then((groups) => {
     res.json(groups)
@@ -76,7 +82,7 @@ app.put('/api/users/:username/groups', (req, res) => {
 })
 
 app.put('/api/groups/:groupname', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
 
   Group.findOneAndUpdate({ groupname: req.params.groupname }, {"$push" : {"concerts": req.body}}, {new: true}).then((user) => {
     console.log(user)
