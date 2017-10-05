@@ -2,6 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-resource/angular-resource.js"></script>
@@ -30,15 +37,22 @@
     <script src="/assets/js/controllers/Register.js"></script>
     <script src="/assets/js/controllers/Profile.js"></script>
 
-
-
-
-
     <base href="/">
+
+
+
+
     <title>Marquee</title>
   </head>
-  <body ng-app="marquee">
-    <h3>Hello</h3>
+  <body  ng-app="marquee">
+    <nav>
+      <a class= 'nav-links' href="login"><div class='nav-divs' ng-hide="navvm.isLoggedIn"><h3 style="display:inline; font-size:20px;">Sign in</h3></div></a>
+      <!-- <a href="profile"><div style="width:200px; height:27px; padding-top:8px; border:2px solid white;" ng-show="navvm.isLoggedIn"><h3 style="display:inline;">Profile</h3></div></a> -->
+      <a class= 'nav-links' href="search"><div class='nav-divs'><h3 style="display:inline; font-size:20px;">Search Concerts</h3> </div></a>
+      <a class= 'nav-links' href="users"><div class='nav-divs'><h3 style="display:inline; font-size:20px;">My List</h3></div></a>
+        <a class= 'nav-links' href="groups"><div class='nav-divs'><h3 style="display:inline; font-size:20px;">My Groups</h3></div></a>
+      <!-- <div class='nav-divs'><h3 style="display:inline; font-size:30px;">Marquee</h3></div> -->
+    </nav>
 
 
     <main ui-view>

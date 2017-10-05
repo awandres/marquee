@@ -23,8 +23,8 @@ angular.module('marquee', [
 
 function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
-    .state('usersIndex', {
-      url: '/',
+    .state('users', {
+      url: '/users',
       controller: 'UsersIndex',
       controllerAs: 'vm',
       templateUrl: 'assets/js/views/UsersIndex.html'
@@ -53,7 +53,13 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       controllerAs: 'vm',
       templateUrl: 'assets/js/views/profile.html'
     })
-  $urlRouterProvider.otherwise('/')
+    .state('groups', {
+      url: '/groups',
+      controller: 'UsersIndex',
+      controllerAs: 'vm',
+      templateUrl: 'assets/js/views/GroupsIndex.html'
+    })
+  $urlRouterProvider.otherwise('/search')
   $locationProvider.html5Mode(true)
 
 }

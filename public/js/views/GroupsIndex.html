@@ -1,0 +1,25 @@
+<div style="display:flex; justify-content:center;">
+<div style="display:flex; flex-direction:row; align-items:center">
+  <div ng-repeat="group in vm.groups" style="margin-left:20px; margin-right:20px;">
+    <h3>{{group.groupname}}</h3>
+    <!-- <input type="submit"  value="Join Group" ng-click="vm.joinGroup(group)" /> -->
+    <button ng-click="vm.joinGroup(group)" Value="{{group}}">Join Group</button>
+
+  </div>
+</div>
+</div>
+
+
+
+<div>
+  <h3 style="text-align:center;">{{ vm.currentUserObject.data[0].username}}'s Groups</h3>
+  <div style="display:flex; flex-direction:row; justify-content:space-around;">
+  <div ng-repeat="group in vm.currentUserObject.data[0].groups">
+    <h3>{{group.groupname}} //</h3>
+      <div class="search-divs" style="width:200px;" ng-repeat="concert in group.concerts">
+        <p>{{concert.name}} at {{concert.venue}}</p>
+        <p><a href="{{concert.url}}">Buy Tickets Here</a></p>
+      </div>
+  </div>
+</div>
+</div>

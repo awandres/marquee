@@ -1,24 +1,16 @@
 [
   {
-    "groupname": "group1",
-    "concerts": [
-      {
-      "name": "groupConcert1",
-      "venue": "groupVenue1",
-      "url": "groupUrl1"
-      }
-    ]
+    "groupname": "metalheads"
+
 
   },
   {
-    "groupname": "group2",
-    "concerts": [
-      {
-      "name": "groupConcert2",
-      "venue": "groupVenue2",
-      "url": "groupUrl2"
-      }
-    ]
+    "groupname": "Rock N Rollers"
+
+
+  },
+  {
+    "groupname": "Pop Culture"
 
   }
 

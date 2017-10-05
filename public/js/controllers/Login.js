@@ -3,10 +3,15 @@ angular
 .controller('loginCtrl', [
   '$state',
   'authentication',
+  'SearchFactory',
+  'UserFactory',
   login
 ])
 
-function login($state, authentication) {
+function login($state, authentication, SearchFactory, UserFactory) {
+  this.currentUserName = localStorage.getItem('currentUserName')
+  this.users = UserFactory.query()
+  this.setUser = SearchFactory.setUser
   this.credentials = {
     username: '',
     password: ''
