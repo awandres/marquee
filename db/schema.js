@@ -3,24 +3,118 @@ const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
 
 const GroupSchema = new mongoose.Schema({
-  groupname: String,
+  groupname: {
+    type: String,
+    required: [true, 'Group name is required'],
+    unique: true,
+    trim: true,
+    minlength: [2, 'Group name must be at least 2 characters'],
+    maxlength: [50, 'Group name cannot exceed 50 characters']
+  },
   concerts: [{
-    name: String,
-    venue: String,
-    url: String
-  }]
+    name: {
+      type: String,
+      required: [true, 'Concert name is required'],
+      trim: true,
+      maxlength: [100, 'Concert name cannot exceed 100 characters']
+    },
+    venue: {
+      type: String,
+      required: [true, 'Venue is required'],
+      trim: true,
+      maxlength: [100, 'Venue cannot exceed 100 characters']
+    },
+    url: {
+      type: String,
+      trim: true,
+      validate: {
+        validator: function(v) {
+          return !v || /^https?:\/\/.+/.test(v)
+        },
+        message: 'URL must be a valid HTTP/HTTPS URL'
+      }
+    },
+    dateAdded: {
+      type: Date,
+      default: Date.now
+    }
+  }],
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
 })
 
 const UserSchema = new mongoose.Schema({
-  username: String,
+  username: {
+    type: String,
+    required: [true, 'Username is required'],
+    unique: true,
+    trim: true,
+    minlength: [3, 'Username must be at least 3 characters'],
+    maxlength: [30, 'Username cannot exceed 30 characters'],
+    match: [/^[a-zA-Z0-9_]+$/, 'Username can only contain letters, numbers, and underscores']
+  },
   concerts: [{
-    name: String,
-    venue: String,
-    url: String
+    name: {
+      type: String,
+      required: [true, 'Concert name is required'],
+      trim: true,
+      maxlength: [100, 'Concert name cannot exceed 100 characters']
+    },
+    venue: {
+      type: String,
+      required: [true, 'Venue is required'],
+      trim: true,
+      maxlength: [100, 'Venue cannot exceed 100 characters']
+    },
+    url: {
+      type: String,
+      trim: true,
+      validate: {
+        validator: function(v) {
+          return !v || /^https?:\/\/.+/.test(v)
+        },
+        message: 'URL must be a valid HTTP/HTTPS URL'
+      }
+    },
+    dateAdded: {
+      type: Date,
+      default: Date.now
+    }
   }],
   groups: [GroupSchema],
-  hash: String,
-  salt: String
+  hash: {
+    type: String,
+    required: true
+  },
+  salt: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+})
+
+// Update the updatedAt field before saving
+GroupSchema.pre('save', function(next) {
+  this.updatedAt = Date.now()
+  next()
+})
+
+UserSchema.pre('save', function(next) {
+  this.updatedAt = Date.now()
+  next()
 })
 
 UserSchema.methods.setPassword = function(password) {
